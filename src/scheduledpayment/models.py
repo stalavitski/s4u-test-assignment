@@ -9,7 +9,7 @@ from django.db import models
 from django.db.models.query import QuerySet
 from django.utils.translation import gettext as _
 
-from transfer.models import InsufficientBalance, Transfer
+from transfer.models import InsufficientBalance, InvalidAccount, Transfer
 
 logger = logging.getLogger(__name__)
 
@@ -97,6 +97,13 @@ class Payment(models.Model):
             return Payment.objects.create(
                 is_successful=False,
                 reason='Insufficient funds.',
+                scheduled_payment=scheduled_payment
+            )
+        except InvalidAccount as e:
+            logger.error(e)
+            return Payment.objects.create(
+                is_successful=False,
+                reason='The recipient account no longer exists.',
                 scheduled_payment=scheduled_payment
             )
         else:
