@@ -1,0 +1,20 @@
+[
+  {
+    "model": "account.Account",
+    "pk": 1,
+    "fields": {
+      "balance": 1000,
+      "number": 123,
+      "owner": 1
+    }
+  },
+  {
+    "model": "account.Account",
+    "pk": 2,
+    "fields": {
+      "balance": 1000,
+      "number": 456,
+      "owner": 1
+    }
+  }
+]

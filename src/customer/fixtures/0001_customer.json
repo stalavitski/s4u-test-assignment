@@ -1,0 +1,10 @@
+[
+  {
+    "model": "customer.Customer",
+    "pk": 1,
+    "fields": {
+      "email": "test@test.invalid",
+      "full_name": "Test Customer"
+    }
+  }
+]
