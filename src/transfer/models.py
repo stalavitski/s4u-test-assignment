@@ -60,3 +60,19 @@ class Transfer(models.Model):
             to_account=to_account,
             amount=amount
         )
+
+
+'''
+Account / transfer schema evolution
+
+- To correctly store information about transfers, I'd prefer to create choices field in the Transfer
+model that will indicated options like (internal, inbound, outbound, withdraw) depends on transfer type.
+- Account should be modified to store data about inbound, outbound and withdraw operations. 
+Currently fields in Account schema are not valid for external connections. 
+We can make additional Model like ExternalAccount (for example), that will store data about external account.
+This model must store data like bank_name/atm_address/card_number anything that is acceptable and available
+in the banking world.
+Make a field in the Account model referred to the ExternalAccount.
+Make other fields not required if field that mention above is not empty. 
+Create accounts for each external operation with ExternalAccount reference.
+'''
